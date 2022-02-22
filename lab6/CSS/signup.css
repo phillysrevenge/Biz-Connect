@@ -1,0 +1,65 @@
+body{
+    width: 700px;
+    height: 100%;
+    margin: 0 auto;
+    border: 5px solid black;
+    margin-top: 7%;
+    background-image: url(/lab6/images/background1.jpg);
+
+}
+footer nav>ul{
+    list-style-type: none;
+    height: 20px;
+}
+footer nav>ul>li{
+    float:left;
+    border: 2px solid black;
+    padding: 3px;
+    margin: 15px;
+    margin-top: 10px;
+    margin-left: 65px;
+    background-color: white;
+}
+footer nav>ul>li>a{
+    text-decoration: none;
+    color: black;
+}
+footer{
+    background-color: grey;
+    height: 75px;
+    width: 700px;
+    margin-top: -15px;
+}
+footer p{
+    text-align: center;
+    width: 700px;
+    height: 30px;
+    font-size: small;
+    
+    margin-top: 40px;
+}
+input{
+    height: 150;
+}
+
+h1{
+    padding: 10px;
+}
+label{
+    padding: 10px;
+    font-size: larger;
+}
+button{
+    margin-top: 10px;
+}
+.grid-container{
+    height: fit-content;
+    
+    background-color: coral;
+}
+button{
+    cursor: pointer;
+}
+.hover:hover{
+    background-color: coral;
+}

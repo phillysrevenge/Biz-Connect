@@ -1,0 +1,74 @@
+body{
+    width: 600px;
+   /* background-color: brown; */
+    height: 600px;
+    border: 10px solid black;
+    border-radius: 10px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+body{
+    background-image: url("/lab6/images/skill1.jpeg");
+}
+h1{
+    margin-left: 40%;
+    font-size: xxx-large;
+    margin-top: 0px;
+}
+.fields{
+width: 300px;
+height: 40px;
+border: 5px solid black;
+margin-bottom: 5%;
+
+}
+.logbot{
+    width: 300px;
+    height: 40px;
+    border: 7px solid black;
+border-radius: 10px;
+margin-bottom: 10%;
+cursor: pointer;
+}
+.logbot:hover{background-color: coral;
+
+}
+.para{
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-bottom: 10%;
+}
+.pass{
+    width: 150px;
+    border: 5px solid;
+    border-radius: 10px;
+    margin-bottom: 10%;
+    cursor: pointer;
+}
+.pass:hover{
+    background-color: black;
+}
+.signup{
+    width: 120px;
+    border: 5px solid;
+    border-radius: 10px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+.signup:hover{
+    background-color: black;
+}
+#form{
+    margin-left: 25%;
+    
+}
+#forms{
+background-color: coral;
+height: 600px;
+}
+a{
+    text-decoration: none;
+}
