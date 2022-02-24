@@ -45,6 +45,10 @@ body {
     color: rgb(255, 255, 255);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
+  .description{
+    font-family:cursive;
+    color: honeydew;
+  }
 
 
   .nav-list {
