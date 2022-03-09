@@ -6,66 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
-    <link rel="stylesheet" href="/lab6/CSS/unsemantic-grid-responsive-tablet.css">
-    <link rel="stylesheet" href="/CSS/signup.css">
 
+
+    <link rel="stylesheet" href="CSS/signup.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/lab6/CSS/indexm.css">
 </head>
 
 
 <body>
-    <form action="" class="grid-container">
-
-        <h1>
-            Create an Account
-        </h1>
-        <img src="" alt="">
-
-        <section class="grid-40">
-            <label for="Name">Name</label> <br> <br>
-            <label for="username">Username</label> <br> <br>
-            <label for="email">Email</label> <br> <br>
-            <label for="address">Address</label> <br> <br>
-            <label for="occupation">Occupation</label> <br> <br>
-            <label for="password">Password</label> <br> <br>
-            <label for="cpassword">Confirm Password</label> <br> <br>
-            <label for="how did you">How did you hear of us?</label>
-
-        </section>
-        <section class="grid-60">
-            <input type="text" name="Name" id="name"> <br> <br>
-            <input type="text" name="Username" id="username"> <br> <br>
-            <input type="text" name="email" id="email"> <br> <br>
-            <input type="text" name="Address" id="address"> <br> <br>
-            <select name="occupation" id="occupation">
-                <option value="select">--Select an Option--</option>
-                <option value="cook">Cook</option>
-                <option value="Barber">Barber</option>
-                <option value="Tailor">Tailor</option>
-                <option value="Phone">Phone Repairs</option>
-                <option value="Tutorial">Teacher</option>
-                <option value="Software">Web Developer</option>
-            </select> <br> <br>
-            <input type="password" name="password" id="password"> <br> <br>
-            <input type="password" name="cpassword" id="cpassword"> <br> <br>
-            <input type="text" name="how did you" id="how did you"> <br> <br>
-            <input type="checkbox" name="terms of use" id="terms"> <label for="terms">Yes, I agree to the <span>Terms of
-                    Use</span></label> <br>
-            <button class="hover">Signup</button>
-        </section>
-
-    </form>
-    <footer>
-        <nav>
-            <ul>
-                <li class="hover"><a href="">Terms of Use</a></li>
-                <li class="hover"><a href="">Contact Us</a></li>
-                <li class="hover"><a href="">Privacy and Security</a></li>
+    <header>
+        <div class="biz-name">
+            <h1> Bizconnect </h1>
+            <p class="description">A Place to find the expertise you require</p>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="PHP/newlogin.html" class="nav-link" target="_blank">Login</a></li>
+                <li class="nav-item"><a href="PHP/signup004.html" class="nav-link" target="_blank">Register</a>
+                </li>
+                <li class="nav-item"><a href="PHP/bizfeedbackform.html" class="nav-link">Feedback</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
         </nav>
-        <div>
-            <p>
-                Group K 2022
-            </p>
+        <form class="">
+            <input class="input-form-search type=" text" name="searchfield" placeholder="Search">
+            <input type="submit" value="Submit">
+        </form>
+    </header>
+
+
+
+
+
+
+    <footer>
+        <div class="skill-footer">
+            <p>© Copyright Bizconnect 2022</p>
+            <div class="footer-social-media">
+                <span><a href="#">Instagram</a> </span>
+                <span><a href="#">Facebook</a></span>
+                <span><a href="#">Twitter</a></span>
+                <span><a href="#">LinkedIn</a></span>
+            </div>
         </div>
     </footer>
 </body>
