@@ -312,3 +312,19 @@ footer {
     font-size: 1.2rem;
   }
 
+.container{
+  border-radius: 20px;
+}
+.reset {
+ 
+    font-weight: bolder;
+    color: black;
+}
+.reset:hover{
+  color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+.signcontainer, .formcontainer, .signform{
+  background-color: coral;
+}
