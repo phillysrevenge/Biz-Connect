@@ -10,14 +10,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Roboto+Serif:wght@100;200&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/lab6/CSS/indexm.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../CSS/indexm.css">
     <title>forgot password</title>
 </head>
 
 <body>
     <header>
         <div class="biz-name">
-            <img src="/lab6/images/logo.jpg" alt="" class="" style="width: 90px; height: 50px;">
+            <img src="../images/logo.jpg" alt="" class="" style="width: 90px; height: 50px;">
         </div>
         <nav class="nav">
             <ul class="nav-list">
@@ -36,7 +38,7 @@
     <main>
         <div class="feedback-container">
             <div>
-                <img class="image" src="/lab6/images/site-pix.jpg" alt="bizconnect">
+                <img class="image" src="../images/site-pix.jpg" alt="bizconnect">
             </div>
             <div class="feedback-main">
                 <h2>Forgot your password ?</h2>
@@ -47,6 +49,23 @@
                     <label for="email">Email:</label><br>
                     <input type="email">
                     <input type="submit" name="" id="submit" value="Reset password">
+                    <div class="form-group">
+                     <label>New Password</label>
+                      <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                       <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                   </div> 
+                   <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+
+                 </div> 
+                 <div class="form-group">
+                  <input type="submit" class="btn btn-primary" value="Submit">
+                   <a class="btn-btn-link ml-2" href="welcome.php">Cancel</a>
+
+                 </div>  
+
                 </form>
             </div>
         </div>
