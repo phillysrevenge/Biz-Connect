@@ -13,17 +13,17 @@
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg " style="background-color: coral;">
         <div class="container">
-            <img src="/lab6/images/logo.jpg" alt="" style="width: 90px; height: 50px;">
+            <img src="../images/logo.jpg" alt="" style="width: 90px; height: 50px;">
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navs">
                 <span class="navbar-toggler-icon"></span>
 
             </button>
             <div class="collapse navbar-collapse" id="navs">
                 <div class="navbar-nav">
-                    <a href="/lab6/index.html" class="nav-item nav-link">Home</a>
+                    <a href="index.php" class="nav-item nav-link">Home</a>
                     <a href="" class="nav-item nav-link">Contact Us</a>
-                    <a href="newlogin.html" class="nav-item nav-link">Login</a>
-                    <a href="signup004.html" class="nav-item nav-link">Signup</a>
+                    <a href="logintest.php" class="nav-item nav-link">Login</a>
+                    <a href="signuptest.php" class="nav-item nav-link">Signup</a>
 
                 </div>
                 <form class="d-flex ml-auto">

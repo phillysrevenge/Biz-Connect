@@ -35,12 +35,12 @@ exit;
         </div>
         <nav class="nav">
             <ul class="nav-list">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="logout.php" class="nav-link" target="">logout</a></li>
-                <li class="nav-item"><a href="signup004.html" class="nav-link" target="">Register</a>
+                <li class="nav-item"><a href="signuptest.php" class="nav-link" target="">Register</a>
                 </li>
-                <li class="nav-item"><a href="bizfeedbackform.html" class="nav-link">Feedback</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
+                <li class="nav-item"><a href="Password.php" class="nav-link">Reset Password</a></li>
             </ul>
         </nav>
         <form class="form-search">

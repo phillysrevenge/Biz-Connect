@@ -14,16 +14,16 @@
     <link id="favicon" rel="icon" type="image/png" href="/lab6/CSS/assets/images/">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="/lab6/CSS/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/bootstrap.css">
 
     <!-- Main style css -->
-    <link rel="stylesheet" href="/lab6/CSS/style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
 
     <!-- Responsive css -->
-    <link rel="stylesheet" href="/lab6/CSS/responsive.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
 
     <!-- Main Color -->
-    <link rel="stylesheet" href="/lab6/CSS/color_gray.css">
+    <link rel="stylesheet" href="../CSS/color_gray.css">
 
 
 </head>
@@ -81,7 +81,7 @@
                         <div class="menu">
                             <!-- brand -->
                             <div class="my-4">
-                                <img src="/lab6/images/logo.jpg" style="width: 100px">
+                                <img src="../images/logo.jpg" style="width: 100px">
                                 <h6 class=""
                                     style="position: relative; bottom: 20px; font-size: 12px; font-weight: bold;">
                                     BIZZCONNECT</h6>
@@ -90,16 +90,16 @@
                             <!--Menu Items-->
                             <ul id="menu" class="list-unstyled menu_list">
                                 <li class="menu-item ">
-                                    <a href="homepage.html">Home</a>
+                                    <a href="index.php">Home</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="active_item" href="manageprofile.html">Edit Profile</a>
+                                    <a class="active_item" href="manageprofile.php">Edit Profile</a>
                                 </li>
                                 <li class="menu-item ">
                                     <a href="upload.html">Upload</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="bizfeedbackform.html">Feedback</a>
+                                    <a href="bizfeedbackform.php">Feedback</a>
                                 </li>
                             </ul>
                         </div>
@@ -241,9 +241,9 @@
 
     </div><!-- #page -->
 
-    <script src="/lab6/js/jquery.min.js"></script>
-    <script src="/lab6/js/bootstrap.min.js"></script>
-    <script src="/lab6/js/custom.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>
 
     <style type="text/css">
         label {

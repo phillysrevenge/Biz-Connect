@@ -134,9 +134,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="collapse navbar-collapse" id="navs">
                 <div class="navbar-nav">
                     <!--<a href="index.html" class="nav-item nav-link">Home</a>-->
-                    <a href="" class="nav-item nav-link">Contact Us</a>
+                    <a href="" class="nav-item nav-link">Feedback</a>
                     <a href="newlogin.html" class="nav-item nav-link">Login</a>
                     <a href="signuptest.php" class="nav-item nav-link">Signup</a>
+                    <a href="Password.php" class="nav-item nav-link">Reset password</a>
 
                 </div>
                 <form class="d-flex ml-auto">
