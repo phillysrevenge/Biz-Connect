@@ -138,10 +138,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <nav class="nav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="logintest.php" class="nav-link" target="_blank">Login</a></li>
-                <li class="nav-item"><a href="signup004.html" class="nav-link" target="_blank">Register</a>
+                <li class="nav-item"><a href="logintest.php" class="nav-link" >Login</a></li>
+                <li class="nav-item"><a href="Contactus.php" class="nav-link" >Contact Us</a>
                 </li>
-                <li class="nav-item"><a href="bizfeedbackform.html" class="nav-link">Feedback</a></li>
+                <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
         </nav>
@@ -205,7 +205,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="text" name="address" class="form-control" placeholder="Address">
                 </div>
                 <div class="col-6">
-                    I agree with the <span><a href="">Terms of use</a></span>
+                    I agree with the <span><a href="Terms.php" target="_blank">Terms of use</a></span>
                     <input type="checkbox" name="agree" >
                 </div>
             </div>

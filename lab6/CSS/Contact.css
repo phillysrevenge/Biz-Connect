@@ -1,48 +1,15 @@
 body{
-    height: 700px;
-    width: 700px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    
     border: 2px solid black;
-    margin-top: 30px;
+    margin: 0 auto;
     border-radius: 5px;
 
 }
-h1{
-    margin-left: auto;
-}
+
+
 
 .form{
-    background-color: gray;
-    height: 700px;
-    width: 700px;
-   
-}
-.form-body, .form-header{
-    margin-left: 60px;
-}
-.input{
-    width: 20em;
+    background-color: #f2f3f4;
     
-}
-.name{
-    margin-left: 60px;
-}
-.email{
-    margin-left: 85px;  
-}
-.phone{
-    margin-left: 87px;
-}
-.comment{
-    display: flex;
-    align-items: center;
-}
-button, {
-    cursor: pointer;
-}
-button:hover{
-    transform: translatex(20px);
-    background-color: indigo;
+   
 }

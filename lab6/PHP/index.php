@@ -37,10 +37,11 @@ exit;
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="logout.php" class="nav-link" target="">logout</a></li>
-                <li class="nav-item"><a href="signuptest.php" class="nav-link" target="">Register</a>
+                <li class="nav-item"><a href="manageprofile.php" class="nav-link" target="">Profile</a>
                 </li>
                 <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
                 <li class="nav-item"><a href="Password.php" class="nav-link">Reset Password</a></li>
+                <li class="nav-item"><a href="Contactus.php" class="nav-link">Contact Us</a></li>
             </ul>
         </nav>
         <form class="form-search">

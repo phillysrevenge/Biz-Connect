@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
+    <link rel="stylesheet" href="../CSS/indexm.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
@@ -21,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navs">
                 <div class="navbar-nav">
                     <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="" class="nav-item nav-link">Contact Us</a>
+                    <a href="Contactus.php" class="nav-item nav-link">Contact Us</a>
                     <a href="logintest.php" class="nav-item nav-link">Login</a>
                     <a href="signuptest.php" class="nav-item nav-link">Signup</a>
 
@@ -113,6 +114,17 @@
     </form>
 
     </div>
+    <footer class="mt-3">
+        <div class="skill-footer">
+            <p>© Copyright Bizconnect 2022</p>
+            <div class="footer-social-media">
+                <span><a href="#">Instagram</a> </span>
+                <span><a href="#">Facebook</a></span>
+                <span><a href="#">Twitter</a></span>
+                <span><a href="#">LinkedIn</a></span>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -102,7 +102,7 @@
                                     <a href="bizfeedbackform.php">Feedback</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>s
                         <!--.menu-->
                     </div>
                     <!--.intro-content-->
