@@ -2,39 +2,43 @@
 require_once "dbconnection.php";
 
 $username = $email = $password = $phone = "";
-$username_err = $email_err = $password_err = $phone_err = "";
+$usernameerror = $emailerror = $passworderror = $phone_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //validate the username
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+        $usernameerror = "Please enter a username.";
      
     } 
+    //The below code acts as a security against sql injection or an xss attack.
     elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
+        $usernameerror = "Username can only contain letters, numbers, and underscores.";
     }
     else{
-        //we now prepare the select statement
-        $sql = "SELECT id FROM users WHERE username = :username";
+        //we now prepare the select statement after getting the username without any dangerous characters.
+        $sql = "SELECT id FROM users WHERE username = :username or email = :email";
         if($stmt = $pdo->prepare($sql)){
-            //binds variables to the prepared statement as parameters
+            //binds variables username and email to the prepared statement as parameters:username and :email
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
     
-            //Now we set the parameters
+            //The code below sets the parameters and assigns them the variables. 
             $param_username = trim($_POST["username"]);
+            $param_email = trim($_POST["email"]);
     
             //Attempt to execute the prepared statement
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
-                    $username_err = "This username is already taken.";
+                    //the code above checks if a user with that username exists and returns the error below if so.
+                    $usernameerror = "This username or email is already taken.";
                 } 
                 else{
                     $username = trim($_POST["username"]);
                 }
             }
             else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Ouch! Something went wrong. Please try again later.";
             }
            
             //we will now close the statement
@@ -42,20 +46,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    //validate password
+    //We validate the password also
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password";
+        $passworderror = "Please enter a password";
+        //if the password field is empty display the error above.
     }
     elseif(strlen(trim($_POST["password"])) <5){
-        $password_err = "Password must have atleast 5 characters.";
+        $passworderror = "Password must have atleast 5 characters.";
+        //if the password is less than 5 characters an error is displayed. This helps for security also
     }
     else{
         $password = trim($_POST["password"]);
     }
-
+    //Validate the other details below too.
     //validate email
     if(empty(trim($_POST["email"]))){
-        $email_err = "Please enter an email address.";
+        $emailerror = "Please enter an email address.";
     }
     else{
         $email = trim($_POST["email"]);
@@ -69,10 +75,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $phone = trim($_POST["phone"]);
     }
 
-    //check if there's an error before sending to database
-    if(empty($username_err) && empty($password_err) && empty($email_err) && empty($phone_err)){
+    //check if there's an error before sending to database to avoid wrong entries
+    if(empty($usernameerror) && empty($passworderror) && empty($emailerror) && empty($phone_err)){
     
-        //create an sql insert statement to put the values in the database
+        //create an sql insert statement to put the values in the database table users.
         $sql = "INSERT INTO users (username, password, email, phone) VALUES (:username, :password, :email, :phone)";
     
      if($stmt = $pdo->prepare($sql)){
@@ -81,15 +87,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
          $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
          $stmt->bindParam(":phone", $param_phone, PDO::PARAM_STR);
-         //set the paramters
+         //Assign values to the paramters
          $param_username = $username;
-         $param_password = password_hash($password, PASSWORD_DEFAULT); //This code hashes the password for security
+         $param_password = password_hash($password, PASSWORD_DEFAULT); //This code hashes the password for security using the default php feature.
          $param_email = $email;
          $param_phone = $phone;
 
          //attemt to execute the prepared statement
          if($stmt->execute()){
-           //Redirect the user to login page
+           //Redirect the user to login page if he/she has successfully logged in.
             header("location: logintest.php");
            }
           else{
@@ -162,20 +168,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-6">
                     <input type="text" name="username" class="form-control <?php 
-    echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" placeholder="Name" value="<?php echo $username; ?>">
+    echo (!empty($usernameerror)) ? 'is-invalid' : ''; ?>" placeholder="Username" value="<?php echo $username; ?>">
             
             <span class="invalid-feedback">
-        <?php echo $username_err; ?></span>
+        <?php echo $usernameerror; ?></span>
             </div>
                 <div class="col-6">
-                    <input type="text" name="email" class="form-control bg-white <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" placeholder="Email" value="<?php echo $email; ?>">
+                    <input type="text" name="email" class="form-control bg-white <?php echo (!empty($usernameerror)) ? 'is-invalid' : ''; ?>" placeholder="Email" value="<?php echo $email; ?>">
+                    <span class="invalid-feedback">
+        <?php echo $usernameerror; ?></span>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-6">
-                    <input type="password" name="password" id="" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" placeholder="Password" value="<?php echo $password; ?>">
+                    <input type="password" name="password" id="" class="form-control <?php echo (!empty($passworderror)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" placeholder="Password" value="<?php echo $password; ?>">
                     <span class="invalid-feedback">
-        <?php echo $password_err; ?></span>
+        <?php echo $passworderror; ?></span>
                 </div>
                 <div class="col-6">
                     <input type="text" name="phone" class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $phone; ?>" placeholder="Phone (+44)">

@@ -33,6 +33,7 @@ exit;
             <img src="../images/logo.jpg" alt="" style="width: 90px; height: 50px;">
             <p class="description">A Place to find the expertise you require</p>
         </div>
+        <h1>Hi Welcome to BizConnect <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> </h1>
         <nav class="nav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>

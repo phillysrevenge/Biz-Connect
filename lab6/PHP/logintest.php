@@ -2,7 +2,7 @@
 //initialize the session
 session_start();
 
-//check if the user is already logged in, if yes then redirect him to the welcome page
+//The below code checks if the user is already logged in, if he/she is, then redirect him to the welcome page
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
@@ -12,81 +12,82 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 //include the database connection file 
 require_once "dbconnection.php";
 
-//define the variables and initialize them with empty values
+//define the variables as empty values at first.
 $username = $password = "";
-$username_err = $password_err = $login_err = "";
+$usernameerror = $passworderror = $loginerror = "";
 
 
 
-//process the form data when the form is submitted and the method is post
+//process the form data when the form is submitted and the method is post. If the method is not post this will be skipped.
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     //echo "entered form processor\n";
 
-    //check if username is empty
+    //check if username field is empty, if it is empty, display an error.
     if(empty(trim($_POST["username"]))){
-     $username_err = "Please enter a username.";
+     $usernameerror = "Please enter a username.";
     
     }
-    //if user is not empty, get the username entered
+    //if the username field is not empty, get the username entered and assign it to the variable username
     else{
         $username = trim($_POST["username"]);
     }
       //echo $_POST["username"];
 
-    //check if password is empty
+    //check if password is empty, if empty generate the error below.
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";
+        $passworderror = "Please enter a password.";
     }
+    //If it's not empty then store the password in the variable.
     else{
         $password = trim($_POST["password"]);
     }
 
-    //Now we validate the input to be sure there is no error
- if(empty($username_err) && empty($password_err)){
+    //Now we validate the input to be sure there is no error, if there is no error we send the details to DB.
+ if(empty($usernameerror) && empty($passworderror)){
         //echo "\nentered database processing";
-        //prepare the sql statement
+        //prepare the sql statement below, and insert the users details in the users table.
      $sql = "SELECT id, username, password FROM users WHERE username = :username";
           
         if($stmt = $pdo->prepare($sql)){
-            //bind the variables to the prepared statement as parameters
+            //We have to bind the values :username to a parameter. The statement below binds it to the username parameter 
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
            // echo $sql;
             //set parameters
             $param_username = trim($_POST["username"]);
             //attempt to execute the prepared statement
             if($stmt->execute()){
-                //check if username exists, if yes then verify password
+                //check if username exists in the database, if yes then verify the password the user entered.
            // echo"executed";
                 if($stmt->rowCount() == 1){
-                    echo "username already exists";
+                    //echo "username already exists";
 
                     if($row = $stmt->fetch()){
-                     echo"details fetched";
+                     //echo"details fetched";
                      $id = $row["id"];
                      $username = $row["username"];
                      $hashed_password = $row["password"];
-                     //the $vairable was defined above. the code below compares the hash an normal password
+                     //the $variable was defined above. the code below compares the hash and normal password. Thpassword was hashed upon signup for security reasons.
                         if(password_verify($password, $hashed_password)){
                          //password is correct, so start a new session
                          session_start();
 
-                            //store the data in session variables
+                            //store the data below in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
-                            //redirect the user to the homepage
+                            //After verifying the user has correct details, redirect the user to the homepage to progress with their life.
                             header("location: index.php");
                          
                         }else{
                             //display an error as password is not valid
-                            $login_err = "Invalid username or password.";
+                            $loginerror = "Invalid username or password.";
                         }
                         
                     }
                 }else{
                     //display an error as username does not exist
-                    $login_err = "Invalid username or password.";
+                    $loginerror = "Invalid username or password.";
                 
                     //echo "WRONG DETAILS BOSS";
                 }
@@ -155,26 +156,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <h1>Login</h1>
             <h3>Log In here using your Username and Password</h3>
         </div>
+        <!--The php statement below displays the login error defined in a variable above. Uses the bootstrap class to style the color of the error message-->
         <?php
-        if(!empty($login_err)){
-            echo '<div class ="alert alert-danger">' . $login_err . '</div>';
+        if(!empty($loginerror)){
+            echo '<div class ="alert alert-danger">' . $loginerror . '</div>';
         }
         ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="row g-1 justify-content-center">
                 <div class="col-6 mt-5">
 
-                    <input type="text" name="username" id="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>" placeholder="Username">
+                    <input type="text" name="username" id="username" class="form-control <?php echo (!empty($usernameerror)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>" placeholder="Username">
                 
-                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    <span class="invalid-feedback"><?php echo $usernameerror; ?></span>
             </div>
                 </div>
                 
             <div class="row g-1 justify-content-center">
                 <div class="col-6 mt-5">
 
-                    <input type="Password" placeholder="Password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span>  
+                    <input type="Password" placeholder="Password" name="password" class="form-control <?php echo (!empty($passworderror)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $passworderror; ?></span>  
                 </div>
                 
             </div>
