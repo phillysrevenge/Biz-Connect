@@ -96,7 +96,7 @@
                                     <a class="active_item" href="manageprofile.php">Edit Profile</a>
                                 </li>
                                 <li class="menu-item ">
-                                    <a href="upload.html">Upload</a>
+                                    <a href="upload.php">Upload</a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="bizfeedbackform.php">Feedback</a>

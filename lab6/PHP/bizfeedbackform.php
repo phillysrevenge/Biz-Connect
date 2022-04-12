@@ -1,3 +1,85 @@
+<?php
+   require_once "dbconnection.php";
+   $name = $email =$service =$rating = $feedback = "";
+   $nameerror= $emailerror = "";
+
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+      if(empty(trim($_POST["name"]))){
+          $nameerror = "Enter a name.";
+      }
+      elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["name"]))){
+       $nameerror = "You have entered dangerous characters";
+      }
+      else{
+          $name = trim($_POST["name"]);
+       }
+       echo "got name";
+      if(empty(trim($_POST["email"]))){
+       $emailerror = "Enter an email";
+      }
+      else{
+          $email = trim($_POST["email"]);
+       }
+
+       if(empty(trim($_POST["service"]))){
+        echo"Select a service";
+       }
+       else{
+           $service = trim($_POST["service"]);
+        }
+        
+        if(empty(trim($_POST["rating"]))){
+            echo "Rate the service";
+        }
+        else{
+            $rating = trim($_POST["rating"]);
+        }
+
+        if(empty(trim($_POST["feedback"]))){
+            echo "Enter an comment";
+        }
+        else{
+            $feedback = trim($_POST["feedback"]);
+        }
+        echo "got details";
+         
+        if(empty($nameerror) && empty($emailerror)){
+            echo "gotten info";
+            $sql = "INSERT INTO reviews (username, email, feedback, service, rating) VALUES (:username, :email, :feedback, :service, :rating)";
+            if($stmt = $pdo->prepare($sql)){
+                $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+                $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
+                $stmt->bindParam(":feedback", $param_feedback, PDO::PARAM_STR);
+                $stmt->bindParam(":service", $param_service, PDO::PARAM_STR);
+                $stmt->bindParam(":rating", $param_rating, PDO::PARAM_STR); 
+
+
+                $param_username = $name;
+                $param_email = $email;
+                $param_feedback = $feedback;
+                $param_service = $service;
+                $param_rating = $rating;
+
+                if($stmt->execute()){
+                    header("location: Fedbackresponse.php");
+                }
+                else{
+                    echo "Sorry something went wrong";
+                }
+                unset($stmt);
+
+            }
+        
+        }
+        else{
+            echo "something went wrong";
+        }
+        unset($pdo);
+
+
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +122,7 @@
 
     <div class="container mt-5" style="background-color: coral;">
 
-        <form action="">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
             <h3 class="text-center">CUSTOMER FEEDBACK FORM</h3>
             <div class=" row">
@@ -48,13 +130,16 @@
                     <label for="Name">
                         <h5>Name</h5>
                     </label>
-                    <input type="text" class="form-control bg-white" name="" id="">
+                    <input type="text" class="form-control <?php 
+                    echo (!empty($nameerror)) ? 'is-invalid' : ''; ?> bg-white" name="name" required value="<?php echo $name; ?>">
+                      <span class="invalid-feedback">
+                      <?php echo $nameerror; ?></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">
                         <h5>Email</h5>
                     </label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" name="email" id="email" class="form-control emailfed">
 
                 </div>
             </div>
@@ -73,42 +158,32 @@
 
                 <div class="col">
                     <label for="excellent">Excellent</label> <br>
-                    <input type="radio" class="" name="service" id="excellent">
+                    <input type="radio" class="" name="rating" id="excellent">
                 </div>
                 <div class="col">
                     <label for="good">Good</label> <br>
-                    <input type="radio" name="service" id="good">
+                    <input type="radio" name="rating" id="good">
                 </div>
                 <div class="col">
                     <label for="average">Average</label> <br>
-                    <input type="radio" class="align-self-center" name="service" id="average">
+                    <input type="radio" class="align-self-center" name="rating" id="average">
                 </div>
                 <div class="col">
                     <label for="dissatisfied">Dissatisfied</label> <br>
-                    <input type="radio" name="service" id="Dissatisfied">
+                    <input type="radio" name="rating" id="Dissatisfied">
                 </div>
             </div>
-            <h5>Comments</h5>
-            <p>We would love to hear your comments or suggestion to help us serve you better.</p>
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <input type="radio" name="comment" id="Comments">
-                    <label for="Comments">Comments</label>
-                </div>
-                <div class="col-4 ">
-                    <input type="radio" name="comment" id="Suggestion">
-                    <label for="Suggestion">Suggestion</label>
-                </div>
-            </div>
+            
 
             <div class=" row justify-content-center">
                 <div>
-                    <textarea class="form-control" name="input" id="" cols="80" rows="10"></textarea>
+                    <textarea class="form-control" name="feedback" id="" cols="80" rows="10"></textarea>
                 </div>
             </div>
 
             <div class=" mt-3">
-                <button class="btn " style="background-color: cornsilk;">Submit</button>
+               
+                <input type="submit" class="btn btn-secondary" value="Submit">
             </div>
     </div>
     </form>

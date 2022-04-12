@@ -263,7 +263,7 @@ footer {
   input[type=email] {
     padding: 5px;
     border-radius: 5px;
-    width: 50%;
+    width: 100%;
     margin-bottom: 1.5rem;
     outline: none;
     font-size: 1.2rem;
@@ -327,4 +327,7 @@ footer {
 }
 .signcontainer, .formcontainer, .signform{
   background-color: coral;
+}
+.emailfed{
+  width: 400px;
 }
