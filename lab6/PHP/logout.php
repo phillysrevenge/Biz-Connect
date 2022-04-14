@@ -1,4 +1,5 @@
 <?php
+//Written by Oluwaferanmi Fawole
 //start the session
 session_start();
 // unset all of the session variables

@@ -1,4 +1,6 @@
 <?php
+//Frontend code written by Femi
+//Full server side code written by Oluwaferanmi Fawole.
 //Start the session
 session_start();
 
@@ -119,10 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
         </nav>
-        <form class="form-search">
-            <input class="input-form-search type=" text" name="searchfield" placeholder="Search">
-            <input type="submit" value="Submit">
-        </form>
+        
     </header>
     <main>
         <div class="feedback-container">

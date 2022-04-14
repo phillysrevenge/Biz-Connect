@@ -1,3 +1,55 @@
+<?php
+//Full server-side code written by Oluwaferanmi Fawole
+//Full front end code written by Mitchell. 
+//Initialize the session
+session_start();
+//check if the user is logged in, if not then redirect him to login page.
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: logintest.php");
+exit;
+}
+
+
+ if($_SERVER["REQUEST_METHOD"] == "POST"){
+     require_once "dbconnection.php";
+     try{
+         if(isset($_POST["username"])) $username = trim($_POST["username"]);
+         if(isset($_POST["email"])) $email = trim($_POST["email"]);
+         if(isset($_POST["phone"])) $phone = trim($_POST["phone"]);
+         if(isset($_POST["address"])) $address = trim($_POST["address"]);
+         if(isset($_POST["occupation"])) $occupation = trim($_POST["occupation"]);
+         if(isset($_SESSION["id"])) $id = $_SESSION["id"];
+
+         $sql = "update `users` set username = '$username', email = '$email', phone = '$phone', adderss = '$address', occupation = '$occupation' WHERE id = $id";
+         $stmt = $pdo->prepare($sql);
+         $stmt->execute();
+
+         
+         $message = "Successfully Updated details";
+        }
+        catch(PDOEXception $e){
+            echo $e->getMessage();
+        }
+    }
+
+    try{
+        require_once "dbconnection.php";
+        $id = $_SESSION["id"];
+        $sql = "SELECT * FROM users WHERE id = $id";
+        $stmt = $pdo->prepare($sql);
+
+        
+        $stmt->execute();
+
+        $details = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $pdo = null;
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+ ?>
+
 <!DOCTYPE html>
 <html lang="zxx" class=" mediaqueries csstransitions cssanimations">
 
@@ -102,7 +154,7 @@
                                     <a href="bizfeedbackform.php">Feedback</a>
                                 </li>
                             </ul>
-                        </div>s
+                        </div>
                         <!--.menu-->
                     </div>
                     <!--.intro-content-->
@@ -129,58 +181,32 @@
                                                         <img class="img-avatar" src="/lab6/images/avatar.png" alt="">
                                                         <p><a href="">Change Profile</a></p>
                                                     </div>
-                                                    <form action="">
+                                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                                         <div class="card card-default p-3">
                                                             <div class="card-heading">
-                                                                <p> Please provide your Full name, Username, Skills and
-                                                                    Services, Mobile Number and email address (won't be
-                                                                    published). </p>
+                                                                <p> Update Details </p>
                                                             </div>
                                                             <div class="card-body">
-                                                                <div class="form-group mt-4">
-                                                                    <label class=" control-label">Full Name <span
-                                                                            class="asterisk">*</span></label>
-                                                                    <div class="">
-                                                                        <input type="text" name="name"
-                                                                            class="form-control"
-                                                                            placeholder="Type your name..." required />
-                                                                    </div>
-                                                                </div>
-
+                                                                
                                                                 <div class="form-group  mt-4">
                                                                     <label class=" control-label">Username <span
                                                                             class="asterisk">*</span></label>
                                                                     <div class="">
-                                                                        <input type="text" name="name"
+                                                                        <input type="text" name="username"
                                                                             class="form-control"
-                                                                            placeholder="Type your name..." required />
+                                                                            value="<?php echo $details["username"]; ?>" required/>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="form-group  mt-4">
-                                                                    <label class=" control-label">Skills and Services
-                                                                        <span class="asterisk">*</span></label>
-                                                                    <div class="">
-                                                                        <textarea rows="5" class="form-control"
-                                                                            placeholder="Type your comment..."
-                                                                            required></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group  mt-4">
-                                                                    <label class=" control-label"> Share a Picture <span
-                                                                            class="asterisk">*</span></label>
-                                                                    <div class="">
-                                                                        <input type="file" name="Picture"
-                                                                            class="form-control" />
-                                                                    </div>
-                                                                </div>
+                                                                
+                                                               
 
                                                                 <div class="form-group  mt-4">
-                                                                    <label class=" control-label"> Mobile Number <span
+                                                                    <label class=" control-label"> Phone Number <span
                                                                             class="asterisk">*</span></label>
                                                                     <div class="">
-                                                                        <input type="number" name="headline"
-                                                                            class="form-control" />
+                                                                        <input type="number" name="phone"
+                                                                            class="form-control" value = "<?php echo $details["phone"]; ?>" required/>
                                                                     </div>
                                                                 </div>
 
@@ -190,32 +216,38 @@
                                                                     <div class="">
                                                                         <input type="email" name="email"
                                                                             class="form-control"
-                                                                            placeholder="Type your email..." required />
+                                                                            value="<?php echo $details["email"]; ?>" required />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group  mt-4">
-                                                                    <label class=" control-label">Website
-                                                                        <i>(Optional)</i></label>
+                                                                    <label class=" control-label">Address <span
+                                                                            class="asterisk">*</span></label>
                                                                     <div class="">
-                                                                        <input type="text" name="headline"
-                                                                            class="form-control" />
+                                                                        <input type="text" name="address"
+                                                                            class="form-control"
+                                                                            value="<?php echo $details["adderss"]; ?>" required />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group  mt-4">
-                                                                    <label class=" control-label"> Bussiness Address
-                                                                        <i>(Optional)</i></label>
+                                                                    <label class=" control-label">Occupation <span
+                                                                            class="asterisk">*</span></label>
                                                                     <div class="">
-                                                                        <input type="text" name="headline"
-                                                                            class="form-control" />
+                                                                        <input type="text" name="occupation"
+                                                                            class="form-control"
+                                                                            value="<?php echo $details["occupation"]; ?>" required />
                                                                     </div>
                                                                 </div>
+
+                                                               
+
+                                                               
 
                                                             </div><!-- card-body -->
                                                         </div><!-- card -->
                                                         <div class="card-footer">
-                                                            <button class="btn btn-primary">SAVE</button>
+                                                            <button type="submit">SAVE</button>
                                                             <button class="btn btn-warning">CANCEL</button>
                                                         </div>
                                                     </form>

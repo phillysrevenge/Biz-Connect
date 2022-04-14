@@ -1,4 +1,15 @@
 <?php
+//Full server side and frontend code written by Oluwaferanmi Fawole.
+  //Initialize the session
+  session_start();
+  //check if the user is logged in, if not then redirect him to login page.
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: logintest.php");
+  exit;
+}
+?>
+
+<?php
    require_once "dbconnection.php";
    $name = $email =$service =$rating = $feedback = "";
    $nameerror= $emailerror = "";
@@ -122,7 +133,7 @@
 
     <div class="container mt-5" style="background-color: coral;">
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="p-5" method="post">
 
             <h3 class="text-center">CUSTOMER FEEDBACK FORM</h3>
             <div class=" row">

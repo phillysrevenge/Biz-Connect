@@ -1,4 +1,5 @@
 <?php
+//Frontend and server side code written by Oluwaferanmi Fawole.
   require_once "dbconnection.php";
    
   if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -23,9 +24,10 @@
                if(isset($_POST["occupation"])) $occupation = $_POST["occupation"];
                if(isset($_POST["price"])) $price = $_POST["price"];
                if(isset($_POST["contact"])) $contact = $_POST["contact"];
+               if(isset($_POST["description"])) $description = $_POST["description"];
                $picture = $filename;
                
-               $sql = "INSERT INTO uploads (name, location, occupation, price, contact, image) VALUES ('$name', '$location', '$occupation', '$price', '$contact', '$picture')";
+               $sql = "INSERT INTO uploads (name, location, occupation, price, contact, image, description) VALUES ('$name', '$location', '$occupation', '$price', '$contact', '$picture', '$description')";
                 $result = $pdo->exec($sql);
 
                 header("location: index.php");
@@ -70,10 +72,7 @@
                 <li class="nav-item"><a href="Contactus.php" class="nav-link">Contact Us</a></li>
             </ul>
         </nav>
-        <form class="form-search">
-            <input class="input-form-search type=" text" name="searchfield" placeholder="Search">
-            <input type="submit" value="Submit">
-        </form>
+        
     </header>
 <body>
     <h1 class="display-4 text-center py-5 mt-5">Share your work with others</h1>
@@ -92,11 +91,11 @@
                 <div class="mb-5">
 
 
-                    <input type="text" class="form-control" id="inputPassword" placeholder="Location" name="location">
+                    <input type="text" class="form-control" id="inputPassword" placeholder="Location" name="location" required>
                 </div>
 
                 <input class="form-control mb-5" list="datalistOptions" id="exampleDataList" name="occupation"
-                    placeholder="Select Occupation...">
+                    placeholder="Select Occupation..." required>
                 <datalist id="datalistOptions">
                     <option value="Barber">
                     <option value="Tailor">
@@ -107,7 +106,7 @@
                 <div class="mb-5">
 
 
-                    <input type="number" class="form-control" id="inputPassword" placeholder="Price($)" name="price">
+                    <input type="number" class="form-control" id="inputPassword" placeholder="Price($)" name="price" required>
                 </div>
                 <div class="mb-5">
 
@@ -115,11 +114,14 @@
                     <input type="text" class="form-control" id="inputPassword" placeholder="Contact" name="contact">
                 </div>
                 <div class="mb-5">
-                    <input type="file" name="picture" class="form-control" id="picture">
+                    <input type="file" name="picture" class="form-control" id="picture" required>
                 </div>
-                <input type="submit" class="btn bg-secondary" value="upload">
-
-
+                
+                <div class="mb-3">
+                 <label for="Description" class="form-label">Description</label>
+                  <textarea class="form-control" id="Description" name="description" rows="4" required></textarea>
+                </div>
+                <input type="submit" class="btn bg-secondary mb-3" value="upload">
             </div>
 
             <div class="col-md-6 col-sm-6">

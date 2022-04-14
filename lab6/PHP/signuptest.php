@@ -1,7 +1,9 @@
 <?php
+//Frontend code written by Femi
+//Serverside code written by Oluwaferanmi Fawole
 require_once "dbconnection.php";
 
-$username = $email = $password = $phone = "";
+$username = $email = $password = $phone = $occupation = $address = "";
 $usernameerror = $emailerror = $passworderror = $phone_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -74,12 +76,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $phone = trim($_POST["phone"]);
     }
+    $address = trim($_POST["address"]);
+    $occupation = trim($_POST["occupation"]);
 
     //check if there's an error before sending to database to avoid wrong entries
     if(empty($usernameerror) && empty($passworderror) && empty($emailerror) && empty($phone_err)){
     
         //create an sql insert statement to put the values in the database table users.
-        $sql = "INSERT INTO users (username, password, email, phone) VALUES (:username, :password, :email, :phone)";
+        $sql = "INSERT INTO users (username, password, email, phone, adderss, occupation) VALUES (:username, :password, :email, :phone, :address, :occupation)";
     
      if($stmt = $pdo->prepare($sql)){
          //bind the variables to the prepared sql statement as parameters
@@ -87,11 +91,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
          $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
          $stmt->bindParam(":phone", $param_phone, PDO::PARAM_STR);
+         $stmt->bindParam(":address", $param_address, PDO::PARAM_STR);
+         $stmt->bindParam(":occupation", $param_occupation, PDO::PARAM_STR);
          //Assign values to the paramters
          $param_username = $username;
          $param_password = password_hash($password, PASSWORD_DEFAULT); //This code hashes the password for security using the default php feature.
          $param_email = $email;
          $param_phone = $phone;
+         $param_occupation = $occupation;
+         $param_address = $address;
+
 
          //attemt to execute the prepared statement
          if($stmt->execute()){

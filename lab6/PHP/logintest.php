@@ -1,4 +1,5 @@
 <?php
+//Front-end and server side code written by Oluwaferanmi Fawole.
 //initialize the session
 session_start();
 
@@ -134,27 +135,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </button>
             <div class="collapse navbar-collapse" id="navs">
                 <div class="navbar-nav">
-                    <!--<a href="index.html" class="nav-item nav-link">Home</a>-->
-                    <a href="" class="nav-item nav-link">Feedback</a>
-                    <a href="newlogin.html" class="nav-item nav-link">Login</a>
+                    <a href="index.php" class="nav-item nav-link">Home</a>
+                    <a href="bizfeedbackform.php" class="nav-item nav-link">Feedback</a>
                     <a href="signuptest.php" class="nav-item nav-link">Signup</a>
                     <a href="Password.php" class="nav-item nav-link">Reset password</a>
 
                 </div>
-                <form class="d-flex ml-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
+                
 
                 </form>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5" style="background-color: coral;">
+    <div class="container mt-5 mb-5 h-100 w-80" style="background-color: coral;">
         <div class="form-header text-center">
-            <h1>Login</h1>
-            <h3>Log In here using your Username and Password</h3>
+            <h1 class="mt-5">Login</h1>
+            <h3 class="mt-3">Log In here using your Username and Password</h3>
         </div>
         <!--The php statement below displays the login error defined in a variable above. Uses the bootstrap class to style the color of the error message-->
         <?php
@@ -162,7 +159,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo '<div class ="alert alert-danger">' . $loginerror . '</div>';
         }
         ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form class= "py-5" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="row g-1 justify-content-center">
                 <div class="col-6 mt-5">
 

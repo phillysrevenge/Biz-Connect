@@ -1,4 +1,5 @@
 <?php
+//Written by Oluwaferanmi Fawole
 /* This page will help create a connection to the database using PDO */
 /*Database Credentials go below here*/
 define('DB_SERVER', 'localhost');

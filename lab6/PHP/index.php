@@ -1,11 +1,24 @@
 <?php
 //Initialize the session
+//Full frontend code written by Femi
+//Full server-side code written by Oluwaferanmi Fawole
 session_start();
 //check if the user is logged in, if not then redirect him to login page.
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: logintest.php");
-exit;
-}
+
+?>
+
+<?php
+ require_once "dbconnection.php";
+  try{
+    $sql = "SELECT * FROM uploads";
+    $stmt = $pdo ->prepare($sql);
+    $stmt->execute();
+    $uploads = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $count = count($uploads);
+ }
+ catch(PDOException $e){
+    echo $e->getMessage();
+  }
 ?>
 
 
@@ -33,7 +46,7 @@ exit;
             <img src="../images/logo.jpg" alt="" style="width: 90px; height: 50px;">
             <p class="description">A Place to find the expertise you require</p>
         </div>
-        <h1>Hi Welcome to BizConnect <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> </h1>
+        <h1>Hi Welcome to BizConnect</h1>
         <nav class="nav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
@@ -53,27 +66,33 @@ exit;
 
     <main>
         <div class="skills">
+            <?php 
+            foreach($uploads as $upload){
+             ?>
             <div class="skills-container card">
                 <div class="skill">
-                    <img class="skill-img" src="../images/skill1.jpeg" alt="skill1">
-                    <h3>Lumidee Barber</h3>
+                    <img class="skill-img" src="<?php echo $upload["image"];?>" alt="skill1">
+                    <h3><?php echo $upload["name"];?></h3>
                     <span class='skills-detail'>
                         <span>
-                            Location: <span class="skills-location">AB25 1LE</span>
+                            Location: <span class="skills-location"><?php echo $upload["location"];?></span>
                         </span>
                         <span>
-                            Available: <span class="skills-availability">Yes </span>
+                            Price($): <span class="skills-availability"><?php echo $upload["price"];?> </span>
+                        </span>
+                        <span>
+                            Contact: <span class="skills-availability"> <?php echo $upload["contact"];?></span>
                         </span>
                     </span>
                 </div>
                 <div class="skills-info">
-                    <div class='skills-name'>Lumidee's Saloon</div>
+                    <div class='skills-name'>Description</div>
                     <div class='skills-tagline'>Just a try will convince you.</div>
-                    <div class='skills-description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-                        placeat nostrum atque architecto corrupti rem consequatur ipsa, similique repellendus iure illum
-                        et vel quibusdam sint sit animi ea. Aliquid, quis!</div>
+                    <div class='skills-description'> <b> <i><?php echo $upload["description"];?></i></b></div>
                 </div>
             </div>
+            <?php }?>
+            <!--
             <div class="skills-container card">
                 <div class="skill">
                     <img class="skill-img" src="../images/skill2.jpeg" alt="skill1">
@@ -474,7 +493,7 @@ exit;
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
     </main>
     <footer>
