@@ -46,10 +46,10 @@ session_start();
             <img src="../images/logo.jpg" alt="" style="width: 90px; height: 50px;">
             <p class="description">A Place to find the expertise you require</p>
         </div>
-        <h1>Hi Welcome to BizConnect</h1>
+        <h1>Welcome to BizConnect <?php echo htmlspecialchars($_SESSION["username"]); ?></h1>
         <nav class="nav">
             <ul class="nav-list">
-                <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="reviews.php" class="nav-link">Reviews</a></li>
                 <li class="nav-item"><a href="logout.php" class="nav-link" target="">logout</a></li>
                 <li class="nav-item"><a href="manageprofile.php" class="nav-link" target="">Profile</a>
                 </li>
