@@ -1,5 +1,5 @@
 <?php
-//Frontend and server side code written by Oluwaferanmi Fawole.
+//Frontend and server side code written by Oluwaferanmi Fawole
   require_once "dbconnection.php";
    
   if($_SERVER["REQUEST_METHOD"] == "POST"){

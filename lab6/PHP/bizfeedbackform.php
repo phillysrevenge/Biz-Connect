@@ -106,7 +106,7 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg " style="background-color: coral;">
-        <div class="container">
+        <div class="container" >
             <img src="../images/logo.jpg" alt="" style="width: 90px; height: 50px;">
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navs">
                 <span class="navbar-toggler-icon"></span>
@@ -120,10 +120,7 @@
                     <a href="signuptest.php" class="nav-item nav-link">Signup</a>
 
                 </div>
-                <form class="d-flex ml-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
+                
 
 
             </div>
@@ -131,7 +128,7 @@
     </nav>
 
 
-    <div class="container mt-5" style="background-color: coral;">
+    <div class="container mt-5 " style="border: 20px solid grey; background-color: rgba(128,128,128, 0.2); border-radius:20px;">
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="p-5" method="post">
 
@@ -150,7 +147,7 @@
                     <label for="email">
                         <h5>Email</h5>
                     </label>
-                    <input type="email" name="email" id="email" class="form-control emailfed">
+                    <input type="email" name="email" id="email" class="form-control">
 
                 </div>
             </div>

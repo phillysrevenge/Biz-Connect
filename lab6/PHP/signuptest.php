@@ -160,10 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
         </nav>
-        <form class="">
-            <input class="input-form-search type=" text" name="searchfield" placeholder="Search">
-            <input type="submit" value="Submit">
-        </form>
+        
     </header>
 
     <div class="mt-2 signcontainer">
@@ -173,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </div>
     <div class="container mt-5 formcontainer">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="mt-3 signform" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="mt-3 signform p-5" method="post">
             <div class="row">
                 <div class="col-6">
                     <input type="text" name="username" class="form-control <?php 
@@ -219,7 +216,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="row mt-5">
                 <div class="col-6">
-                    <input type="text" name="address" class="form-control" placeholder="Address">
+                    <input type="text" name="address" class="form-control mb-3" placeholder="Address">
                 </div>
                 <div class="col-6">
                     I agree with the <span><a href="Terms.php" target="_blank">Terms of use</a></span>
@@ -227,7 +224,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
             </div>
             <div class="form-group">
-    <input type="submit" class="btn btn-primary" value="Submit">
+    <input type="submit" class="btn btn-secondary" value="Submit">
         </form>
 
     </div>

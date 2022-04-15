@@ -312,9 +312,7 @@ footer {
     font-size: 1.2rem;
   }
 
-.container{
-  border-radius: 20px;
-}
+
 .reset {
  
     font-weight: bolder;
@@ -326,7 +324,10 @@ footer {
     text-decoration: none;
 }
 .signcontainer, .formcontainer, .signform{
-  background-color: coral;
+  background-color: rgba(128,128,128, 0.2);
+}
+.formcontainer{
+  border-radius: 20px;
 }
 .emailfed{
   width: 400px;

@@ -24,7 +24,7 @@
 
             <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
             <li class="nav-item"><a href="" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="" class="nav-link">About</a></li>
+            
 
         </ul>
     </nav>
