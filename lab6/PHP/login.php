@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="navbar-nav">
                     <a href="index.php" class="nav-item nav-link">Home</a>
                     <a href="bizfeedbackform.php" class="nav-item nav-link">Feedback</a>
-                    <a href="signuptest.php" class="nav-item nav-link">Signup</a>
+                    <a href="signup.php" class="nav-item nav-link">Signup</a>
                     <a href="Password.php" class="nav-item nav-link">Reset password</a>
 
                 </div>

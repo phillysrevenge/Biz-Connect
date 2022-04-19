@@ -7,7 +7,7 @@ session_start();
 //confirm the user is logged in, if not send him to the login page.
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: logintest.php");
+    header("location: login.php");
     exit;
 }
 
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //the password has been updated successfully so we can destroy the session
                 session_destroy();
                 //after destroying the session, redirect the user to the login page
-                header("location: logintest.php");
+                header("location: login.php");
                 exit();
             }
             else{
@@ -115,10 +115,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <nav class="nav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="logintest.php" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="signuptest.php" class="nav-link">Register</a></li>
-                <li class="nav-item"><a href="bizfeedbackform.html" class="nav-link">Feedback</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="signup.php" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
+              
             </ul>
         </nav>
         

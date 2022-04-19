@@ -1,10 +1,10 @@
 <?php
-//Full server side and frontend code written by Oluwaferanmi Fawole.
+//Full server side and frontend code written by Oluwaferanmi Fawole and Femi.
   //Initialize the session
   session_start();
   //check if the user is logged in, if not then redirect him to login page.
   if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: logintest.php");
+    header("location: login.php");
   exit;
 }
 ?>
@@ -116,8 +116,8 @@
                 <div class="navbar-nav">
                     <a href="index.php" class="nav-item nav-link">Home</a>
                     <a href="Contactus.php" class="nav-item nav-link">Contact Us</a>
-                    <a href="logintest.php" class="nav-item nav-link">Login</a>
-                    <a href="signuptest.php" class="nav-item nav-link">Signup</a>
+                    <a href="login.php" class="nav-item nav-link">Login</a>
+                    <a href="signup.php" class="nav-item nav-link">Signup</a>
 
                 </div>
                 

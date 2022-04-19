@@ -20,10 +20,10 @@
     <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="logintest.php" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
 
             <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
-            <li class="nav-item"><a href="" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="signup.php" class="nav-link">Signup</a></li>
             
 
         </ul>

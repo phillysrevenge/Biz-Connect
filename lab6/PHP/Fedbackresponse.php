@@ -23,8 +23,7 @@
             <li class="nav-item"><a href="manageprofile.php" class="nav-link">Profile</a></li>
 
             
-            <li class="nav-item"><a href="" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="" class="nav-link">About</a></li>
+            
 
         </ul>
     </nav>

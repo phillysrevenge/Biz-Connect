@@ -105,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          //attemt to execute the prepared statement
          if($stmt->execute()){
            //Redirect the user to login page if he/she has successfully logged in.
-            header("location: logintest.php");
+            header("location: login.php");
            }
           else{
             echo "Oops! Something went wrong buddy. Please try again later.";
@@ -152,8 +152,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
         <nav class="nav">
             <ul class="nav-list">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="logintest.php" class="nav-link" >Login</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link" >Login</a></li>
                 <li class="nav-item"><a href="Contactus.php" class="nav-link" >Contact Us</a>
                 </li>
                 <li class="nav-item"><a href="bizfeedbackform.php" class="nav-link">Feedback</a></li>
